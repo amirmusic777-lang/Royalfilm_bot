@@ -1,1 +1,1 @@
-worker: python bot.py
+worker: python Royalfilm_bot/bot.py
