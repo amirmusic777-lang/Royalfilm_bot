@@ -1,10 +1,11 @@
 import logging
+import asyncio
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes
 
 # -----------------------------
 # تنظیمات
-TOKEN = "YOUR_BOT_TOKEN"
+TOKEN = "8318214493:AAF9ijJmmqr7s7jr2wWkNubSWU6RNSeWCkg"   # توکن را اینجا بگذار
 
 # لینک‌های کیفیت‌ها
 LINK_480 = "https://t.me/c/2970237111/16"
@@ -38,8 +39,9 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif query.data == "1080":
         await query.message.reply_text(LINK_1080)
 
-    # تنظیم تایمر حذف 10 ثانیه
-    await query.message.delete(timeout=10)
+    # حذف پیام بعد از 10 ثانیه
+    await asyncio.sleep(10)
+    await query.message.delete()
 
 app = ApplicationBuilder().token(TOKEN).build()
 app.add_handler(CommandHandler("start", start))
